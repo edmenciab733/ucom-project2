@@ -23,15 +23,18 @@ res[int(keypoint[index_mounth]):int(keypoint[index_mounth])+size_mouth, int(keyp
 
 Ayuda:
 
-La tecla A activa la funcion de mostrar la boca mas grande
+La tecla A activa la funcion de mostrar la boca mas grande(Puño cerrado o dedo de ok )
 
-La tecla D muestra la lengua y el ojo resaltado
+La tecla D muestra la lengua y el ojo resaltado(Mano Abierta)
 
-La tecla S muestra los keypoints encontrados por el modelo
+La tecla S muestra los keypoints encontrados por el modelo (Movimiento desconocido en el cuadro)
 
 La tecla L  desactiva la funcion  del teclado y deja a cargo del model  y area en verde para la deteccion del gesto. 
 
 La tecla Q es para salir.
+
+------
+
 
 Generalidades: 
 
