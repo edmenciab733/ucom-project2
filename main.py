@@ -60,6 +60,7 @@ show_mouth = False
 show_nose = False
 show_point = False
 key_show = False
+key_bounding = False
 frameCounter = 0
 
 
@@ -187,7 +188,7 @@ while(True):
                     roi=resultImage[50:500, 50:500]
                     hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
                     mask = cv2.inRange(hsv, lower_color, upper_color)
-                    cv2.rectangle(resultImage,(50,50),(500,500),(0,255,0),0)  
+                    cv2.rectangle(resultImage,(50,50),(500,500),(0,255,255),0)  
                     #print(cv2.countNonZero(mask) )
                     if cv2.countNonZero(mask) > 30636:
 
@@ -272,8 +273,10 @@ while(True):
 
 
             #
-            #image_new = cv2.addWeighted(resultImage, alpha, image, 1 - alpha, 0)
-
+            if key_bounding == True:
+                cv2.rectangle(resultImage, (t_x, t_y),
+                                        (t_x + t_w , t_y + t_h),
+                                        (0,0,255) ,1)
 
 
         else:
@@ -295,6 +298,8 @@ while(True):
 
     if k== ord('q'):
         break
+    elif k == ord('f'):
+        key_bounding = True
     elif k== ord('a'):
         show_nose = True
         key_show = True
@@ -310,6 +315,7 @@ while(True):
         show_mouth = False
         show_nose  = False
         key_show = False
+        key_bounding = False
 
        
 
