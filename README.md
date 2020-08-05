@@ -4,7 +4,7 @@ Video de Presentacion del funcionamiento del proyecto:
 
 https://www.loom.com/share/ec2c9dea09e4484599cefc200b0f6656
 
-El codigo principal se encuentra en main.py
+El codigo principal se encuentra en main.py(los demas archivos .py son auxiliares que no son necesarios para ejecutar main.py) 
 
 Librerias utilizadas
 ```python
