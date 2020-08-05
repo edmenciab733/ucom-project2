@@ -17,7 +17,6 @@ res[int(keypoint[index_mounth]):int(keypoint[index_mounth])+size_mouth, int(keyp
 ## Solucion(mala): 
 ##aux = res[int(keypoint[index_mounth]):int(keypoint[index_mounth])+size, int(keypoint[index_mounth -1]):int(keypoint[index_mounth -1])+size ]
 ## mouth = cv2.resize(mouth,(int(aux.shape[1]),int(aux.shape[0])))
-
 ```
 
 
@@ -42,4 +41,15 @@ Generalidades:
 
 - Las imagenes son sacadas de internet. 
 
+Deteccion de gestos: Con un foto blanco, el filtro por HSV detecta una gama de colores y en base a esa gama de colores envia al modelo el cuadro marcado en verde
+
+```python
+lower_color = np.array([0,20,70], dtype=np.uint8)
+upper_color = np.array([20,255,255], dtype=np.uint8)
+roi=resultImage[50:500, 50:500]
+hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+mask = cv2.inRange(hsv, lower_color, upper_color)
+cv2.rectangle(resultImage,(50,50),(500,500),(0,255,0),0)
+
+```
 
