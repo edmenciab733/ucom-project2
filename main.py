@@ -49,13 +49,13 @@ def get_random_string(length=8):
 face_cascade = cv2.CascadeClassifier('./clasificadores/haarcascade_frontalface_alt.xml')
 if face_cascade.empty(): raise Exception("¿Está seguro que es la ruta correcta?")
 
-my_model= load_model("./keypoints.h5")
-my_model_gestos= load_model("./gestos.h5")
-tongue  = cv2.imread("./lengua.jpg") 
-mouth = cv2.imread("./boca.png") 
-eyes_left  = cv2.imread("./izquierdo.png")
-rigth_left  = cv2.imread("./derecho.png") 
-nose  = cv2.imread("./nose.jpg") 
+my_model= load_model("./models/keypoints.h5")
+my_model_gestos= load_model("./models/gestos.h5")
+tongue  = cv2.imread("./images/lengua.jpg") 
+mouth = cv2.imread("./images/boca.png") 
+eyes_left  = cv2.imread("./images/izquierdo.png")
+rigth_left  = cv2.imread("./images/derecho.png") 
+nose  = cv2.imread("./images/nose.jpg") 
 show_mouth = False
 show_nose = False
 show_point = False
