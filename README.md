@@ -42,6 +42,8 @@ La tecla D muestra la lengua y el ojo resaltado(Mano Abierta)
 
 La tecla S muestra los keypoints encontrados por el modelo (Movimiento desconocido en el cuadro)
 
+La tecla F muestra el bouding box del rostro
+
 La tecla L  desactiva la funcion  del teclado y deja a cargo del model  y area en verde para la deteccion del gesto. 
 
 La tecla Q es para salir.
