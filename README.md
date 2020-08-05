@@ -4,6 +4,20 @@ Video de Presentacion del funcionamiento del proyecto:
 
 https://www.loom.com/share/ec2c9dea09e4484599cefc200b0f6656
 
+El codigo principal se encuentra en main.py
+
+Librerias utilizadas
+```python
+import numpy as np
+import cv2
+import dlib
+import threading
+import random
+import string
+from keras.models import load_model
+from keras.preprocessing import image
+```
+
 
 Modelado de Keypoints
 
