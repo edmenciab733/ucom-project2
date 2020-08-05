@@ -59,7 +59,7 @@ nose  = cv2.imread("./images/nose.jpg")
 show_mouth = False
 show_nose = False
 show_point = False
-
+key_show = False
 frameCounter = 0
 
 
@@ -181,34 +181,35 @@ while(True):
         if fid in list(faceNames):
 
             try:
-                roi=resultImage[50:500, 50:500]
-                hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
-                mask = cv2.inRange(hsv, lower_color, upper_color)
-                cv2.rectangle(resultImage,(50,50),(500,500),(0,255,0),0)  
-                #print(cv2.countNonZero(mask) )
-                if cv2.countNonZero(mask) > 30636:
+                if key_show == True:
+                    print("Se presiono una tecla, presion L si quiere desactivar")
+                else:
+                    roi=resultImage[50:500, 50:500]
+                    hsv = cv2.cvtColor(roi, cv2.COLOR_BGR2HSV)
+                    mask = cv2.inRange(hsv, lower_color, upper_color)
+                    cv2.rectangle(resultImage,(50,50),(500,500),(0,255,0),0)  
+                    #print(cv2.countNonZero(mask) )
+                    if cv2.countNonZero(mask) > 30636:
 
-                    msg=resultImage[50:500, 50:500]
-                    msg = cv2.resize(msg,(int(64),int(64)))
+                        msg=resultImage[50:500, 50:500]
+                        msg = cv2.resize(msg,(int(64),int(64)))
 
-                   # cv2.imwrite('./dgestos_aux/' + get_random_string() + '.jpg' , msg )
-                    msg = msg / 255.0
-                    msg = np.expand_dims(msg, axis = 0)
-                    show_point = False
-                    show_mouth = False
-                    show_nose  = False
-                    result = my_model_gestos.predict( msg)
-                    if np.argmax(result[0]) == 0:
-                        show_point = True
-                    elif np.argmax(result[0]) == 1:
-                        show_mouth = True
-                    elif np.argmax(result[0]) == 3:
-                        show_nose  = True
-                    elif np.argmax(result[0]) == 2:
-                        show_nose  = True
+                       # cv2.imwrite('./dgestos_aux/' + get_random_string() + '.jpg' , msg )
+                        msg = msg / 255.0
+                        msg = np.expand_dims(msg, axis = 0)
 
-                    print(np.argmax(result[0]))
-                   
+                        result = my_model_gestos.predict( msg)
+                        if np.argmax(result[0]) == 0:
+                            show_point = True
+                        elif np.argmax(result[0]) == 1:
+                            show_mouth = True
+                        elif np.argmax(result[0]) == 3:
+                            show_nose  = True
+                        elif np.argmax(result[0]) == 2:
+                            show_nose  = True
+
+                        print(np.argmax(result[0]))
+                       
                 
                 
                 sub_image = resultImage[t_y:t_y+t_h, t_x:t_x+t_w]
@@ -225,7 +226,7 @@ while(True):
                     res = cv2.resize(res,(int(96),int(96)))
                     if show_mouth == True:
                         index_mounth = 25
-                        index_eye_left = 1
+                        index_eye_left = 5
                         size = 20
                         size_eye = 17
 
@@ -288,10 +289,27 @@ while(True):
     # Display the resulting frame
     baseImage = resultImage
     cv2.imshow('Selfie',baseImage)
-    
+    k = cv2.waitKey(1)
+   
 
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+
+    if k== ord('q'):
         break
+    elif k== ord('a'):
+        show_nose = True
+        key_show = True
+        print('mostrar nose')
+    elif k== ord('s'):
+        show_point = True
+        key_show = True
+    elif k== ord('d'):
+        show_mouth = True
+        key_show = True
+    elif k== ord('l'):
+        show_point = False
+        show_mouth = False
+        show_nose  = False
+        key_show = False
 
        
 
